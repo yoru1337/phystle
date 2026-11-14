@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://21pqjeyy66eb"]
+
+[ext_resource type="FontFile" uid="uid://bfgsy362xe7v0" path="res://Daydream DEMO.otf" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://mreehuflin5j" path="res://label.gd" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://bmxnriyrd313n" path="res://button.gd" id="3_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://dbdalwpfyhvxa" path="res://1000002730.jpg" id="4_jix8l"]
+[ext_resource type="AudioStream" uid="uid://s7vvgi2l73qq" path="res://PhystleMainMenuTheme.mp3" id="5_glbon"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uwf36"]
+font = ExtResource("1_7vrkn")
+font_size = 85
+
+[sub_resource type="Theme" id="Theme_l7bmo"]
+default_font = ExtResource("1_7vrkn")
+default_font_size = 53
+
+[node name="MainMenu" type="Node2D" unique_id=23111545]
+position = Vector2(266, 38)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=44593828]
+offset_left = -131.0
+offset_top = 59.0
+offset_right = 718.0
+offset_bottom = 204.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=525882759]
+layout_mode = 2
+text = "      PHYSTLE"
+label_settings = SubResource("LabelSettings_uwf36")
+script = ExtResource("2_fu7sn")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=295426216]
+offset_left = -25.0
+offset_top = 316.0
+offset_right = 617.0
+offset_bottom = 411.0
+
+[node name="Button" type="Button" parent="VBoxContainer2" unique_id=1752172554]
+layout_mode = 2
+theme = SubResource("Theme_l7bmo")
+text = "START"
+script = ExtResource("3_fu7sn")
+
+[node name="1000002730" type="Sprite2D" parent="." unique_id=1794483263]
+z_index = -2
+position = Vector2(293, 302.00003)
+scale = Vector2(0.64973956, 0.61111104)
+texture = ExtResource("4_jix8l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2027323821]
+stream = ExtResource("5_glbon")
+volume_db = -10.698
+autoplay = true

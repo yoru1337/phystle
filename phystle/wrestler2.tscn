@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://60r1u0gprh4u"]
+
+[ext_resource type="Script" uid="uid://cqcpf25gfn6hk" path="res://wrestler2.gd" id="1_6a2xm"]
+[ext_resource type="Texture2D" uid="uid://bwio5p5w1dqc1" path="res://1000002713.png" id="2_6fbff"]
+[ext_resource type="Texture2D" uid="uid://ceei7jaexqx0c" path="res://1000002716.png" id="3_1776e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kno4"]
+size = Vector2(25, 111)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xscmc"]
+bounce = 0.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgh2q"]
+size = Vector2(13, 59.25)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rgk5o"]
+bounce = 0.4
+
+[node name="wrestler" type="Node2D" unique_id=185243034]
+position = Vector2(326, 198)
+script = ExtResource("1_6a2xm")
+
+[node name="body" type="RigidBody2D" parent="." unique_id=1818904359]
+mass = 3.0
+linear_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="body" unique_id=1216420062]
+position = Vector2(5, 46.999996)
+scale = Vector2(0.38475, 0.24387501)
+texture = ExtResource("2_6fbff")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body" unique_id=1667793347]
+position = Vector2(0, 45)
+shape = SubResource("RectangleShape2D_3kno4")
+
+[node name="FloorRay" type="RayCast2D" parent="body" unique_id=1100123462]
+position = Vector2(1, 40)
+target_position = Vector2(-1, 67)
+collision_mask = 2
+
+[node name="arm1" type="RigidBody2D" parent="." unique_id=941474306]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_xscmc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="arm1" unique_id=485767691]
+position = Vector2(12, 45.375)
+shape = SubResource("RectangleShape2D_xgh2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="arm1" unique_id=923720615]
+position = Vector2(11, 45)
+scale = Vector2(0.353, 0.31550002)
+texture = ExtResource("3_1776e")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(230.82556, 97.210236, 47.158936, 199.35382)
+
+[node name="arm2" type="RigidBody2D" parent="." unique_id=122959762]
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_rgk5o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arm2" unique_id=1897484971]
+position = Vector2(-6, 41.75)
+shape = SubResource("RectangleShape2D_xgh2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="arm2" unique_id=1768515315]
+z_index = -2
+position = Vector2(-6, 43)
+scale = Vector2(0.353, 0.31550002)
+texture = ExtResource("3_1776e")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(228.05731, 93.51471, 53.14685, 202.92432)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=194501103]
+position = Vector2(12, 21)
+node_a = NodePath("../body")
+node_b = NodePath("../arm1")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="." unique_id=1559880440]
+position = Vector2(-7, 20)
+node_a = NodePath("../body")
+node_b = NodePath("../arm2")

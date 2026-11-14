@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://dw30qlvyws6di"]
+
+[ext_resource type="Texture2D" uid="uid://byj4ydddhlubl" path="res://images.png" id="1_jiui3"]
+[ext_resource type="PackedScene" uid="uid://cuffyq5tsf18o" path="res://wrestler.tscn" id="1_ln3uk"]
+[ext_resource type="Script" uid="uid://dohrc6tkcdvtp" path="res://ring.gd" id="1_rlsp6"]
+[ext_resource type="PackedScene" uid="uid://60r1u0gprh4u" path="res://wrestler2.tscn" id="2_7w7ck"]
+[ext_resource type="Texture2D" uid="uid://c35oqxfs78q7i" path="res://images2.png" id="2_jpbn5"]
+[ext_resource type="Texture2D" uid="uid://cyxopkgvoad22" path="res://3b28e3a90cd4463a1d0708879cab0187.jpg" id="3_c63bx"]
+[ext_resource type="PackedScene" uid="uid://cpd04qtrreiqm" path="res://wrestler3.tscn" id="3_qn3gn"]
+[ext_resource type="FontFile" uid="uid://bfgsy362xe7v0" path="res://Daydream DEMO.otf" id="8_3kaok"]
+[ext_resource type="AudioStream" uid="uid://dc3rm7it3qbjb" path="res://Level7599 2.mp3" id="9_vy51d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oub1p"]
+size = Vector2(850, 117)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bu6k0"]
+friction = 0.0
+bounce = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_706s6"]
+size = Vector2(8, 106)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_no6in"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu6k0"]
+size = Vector2(1161, 40)
+
+[sub_resource type="LabelSettings" id="LabelSettings_glxcs"]
+font = ExtResource("8_3kaok")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kldwg"]
+font = ExtResource("8_3kaok")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7bmo"]
+size = Vector2(54, 794)
+
+[node name="ring" type="Node2D" unique_id=1029779718]
+script = ExtResource("1_rlsp6")
+wrestler_scenes = Array[PackedScene]([ExtResource("2_7w7ck"), ExtResource("3_qn3gn")])
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=519360082]
+position = Vector2(580, 538)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2125534391]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_oub1p")
+debug_color = Color(0.39020732, 0, 0.020904822, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1656794211]
+position = Vector2(0.80274963, 14.184177)
+scale = Vector2(1.1480305, 0.29308826)
+texture = ExtResource("1_jiui3")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=342242941]
+physics_material_override = SubResource("PhysicsMaterial_bu6k0")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1159582828]
+position = Vector2(158.99998, 439.00003)
+scale = Vector2(0.01107596, 0.3433545)
+texture = ExtResource("2_jpbn5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=183923364]
+position = Vector2(159, 439)
+shape = SubResource("RectangleShape2D_706s6")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1800675042]
+physics_material_override = SubResource("PhysicsMaterial_no6in")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1522907779]
+position = Vector2(1001, 439)
+shape = SubResource("RectangleShape2D_706s6")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=456857867]
+position = Vector2(1001.0001, 439.00003)
+scale = Vector2(0.01107596, 0.3433545)
+texture = ExtResource("2_jpbn5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1449576785]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1383496319]
+position = Vector2(578, 629)
+shape = SubResource("RectangleShape2D_bu6k0")
+debug_color = Color(0.9983235, 0, 0.15622532, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=381466435]
+position = Vector2(572, 822)
+scale = Vector2(4.9661016, 1)
+texture = ExtResource("3_c63bx")
+
+[node name="wrestler" parent="." unique_id=1218713080 groups=["player"] instance=ExtResource("1_ln3uk")]
+position = Vector2(900, 162)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=142854314]
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer" unique_id=922666292]
+offset_right = 331.0
+offset_bottom = 115.0
+label_settings = SubResource("LabelSettings_glxcs")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1577037015]
+offset_left = 785.0
+offset_top = 2.0
+offset_right = 1149.0
+offset_bottom = 93.0
+label_settings = SubResource("LabelSettings_kldwg")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=702402243]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=610180783]
+position = Vector2(-28, 355)
+shape = SubResource("RectangleShape2D_l7bmo")
+debug_color = Color(0.9831285, 0, 0.36018598, 0.41960785)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1038107287]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=636180510]
+position = Vector2(1179, 348)
+shape = SubResource("RectangleShape2D_l7bmo")
+debug_color = Color(0.9831285, 0, 0.36018598, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1591242171]
+stream = ExtResource("9_vy51d")
+volume_db = -0.55
+autoplay = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
